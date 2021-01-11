@@ -1,11 +1,24 @@
-#include <vulkan\vulkan.h>
-#include <GLFW\glfw3.h>
+#ifndef HELLO_TRIANGLE_APPLICATION_H__
+#define HELLO_TRIANGLE_APPLICATION_H__
+
+#include <vulkan/vulkan.h>
+#include <GLFW/glfw3.h>
 #define GLFW_INCLUDE_VULKAN
-#include <iostream>
 #include <stdexcept>
-#include <cstdlib>
-#include <cstring>
 #include <vector>
+
+const uint32_t WIDTH = 800;
+const uint32_t HEIGHT = 600;
+
+std::vector<const char*> validationLayers = {
+	"VK_LAYER_KHRONOS_validation"
+};
+
+#ifdef NDEBUG
+const bool enableValidationLayers = false;
+#else
+const bool enableValidationLayers = true;
+#endif // NDEBUG
 
 
 class HelloTriangleApplication {
@@ -61,3 +74,5 @@ private:
 	VkDebugUtilsMessengerEXT debugMessenger;
 	VkPhysicalDevice physicalDevice = VK_NULL_HANDLE;
 };
+
+#endif
