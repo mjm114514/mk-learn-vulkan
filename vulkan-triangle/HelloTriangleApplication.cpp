@@ -44,6 +44,7 @@ void DestroyDebugUtilsMessengerEXT(
 }
 
 void HelloTriangleApplication::run() {
+	initWindow();
 	initVulkan();
 	mainLoop();
 	cleanup();
@@ -66,7 +67,7 @@ void HelloTriangleApplication::mainLoop() {
 
 void HelloTriangleApplication::cleanup() {
 	if (enableValidationLayers) {
-		// DestroyDebugUtilsMessengerEXT(instance, debugMessenger, nullptr);
+		DestroyDebugUtilsMessengerEXT(instance, debugMessenger, nullptr);
 	}
 	vkDestroyInstance(instance, nullptr);
 
