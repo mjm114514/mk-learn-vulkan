@@ -14,6 +14,10 @@ const bool enableValidationLayers = false;
 const bool enableValidationLayers = true;
 #endif // NDEBUG
 
+struct QueueFamilyIndices {
+	uint32_t graphicsFamily;
+};
+
 class HelloTriangleApplication {
 public:
 	void run();
@@ -29,6 +33,8 @@ private:
 
 	void createInstance();
 
+	void pickPhysicalDevice();
+
 	bool checkValidationLayerSupport();
 
 	std::vector<const char*> getRequiredExtensions();
@@ -36,6 +42,10 @@ private:
 	void setupDebugMessenger();
 
 	void populateDebugMessengerCreateInfo(VkDebugUtilsMessengerCreateInfoEXT& createInfo);
+
+	bool isDeviceSuitable(VkPhysicalDevice device);
+
+	QueueFamilyIndices findQueueFamilies(VkPhysicalDevice device);
 
 private:
 	GLFWwindow* window;
